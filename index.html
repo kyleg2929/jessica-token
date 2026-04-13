@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jessica Token (CUH) — Bitcoin-native OP-20 token built on OPNet. No bridges, no wrapped assets. Trade CUH directly for Bitcoin on MotoSwap." />
+  <meta name="keywords" content="CUH, Jessica Token, OPNet, Bitcoin DeFi, OP-20, MotoSwap, Bitcoin Layer 1" />
+  <meta property="og:title" content="Jessica Token — CUH" />
+  <meta property="og:description" content="Bitcoin-native OP-20 token on OPNet. Hold, stake, and swap CUH for real mainnet Bitcoin." />
+  <meta property="og:image" content="https://i.postimg.cc/MHq8TQpw/CUH.gif" />
+  <title>Jessica Token — CUH | Bitcoin L1 OP-20</title>
+  <link rel="icon" href="CUH.gif" type="image/gif" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #9B59D0;
+      --purple-dark: #7B3AB0;
+      --purple-light: rgba(155, 89, 208, 0.12);
+      --green: #27A96C;
+      --bg: #0a0a0a;
+      --bg-card: #141414;
+      --bg-card2: #1a1a1a;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--purple);
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .nav-logo span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+    }
+
+    .nav-logo span em {
+      color: var(--purple);
+      font-style: normal;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--purple); }
+
+    .nav-cta {
+      background: var(--purple);
+      color: #fff !important;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(155,89,208,0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      pointer-events: none;
+    }
+
+    .ticker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-hover);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(39,169,108,0.4); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(39,169,108,0); }
+    }
+
+    .logo-wrap {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--purple);
+      background: #fff;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 40px rgba(155,89,208,0.3);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 span { color: var(--purple); }
+
+    .hero-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      letter-spacing: 0.07em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 0.5px solid var(--border-hover);
+      border-radius: 8px;
+      padding: 12px 28px;
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-1px); }
+
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .verified-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--purple);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+    }
+
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card:hover { border-color: var(--purple); }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .stat-value.purple { color: var(--purple); }
+
+    /* ABOUT */
+    .desc-block {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.75rem;
+      font-size: 13px;
+      line-height: 2;
+      color: var(--text-muted);
+      border-left: 2px solid var(--purple);
+    }
+
+    .contract-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contract-box {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.875rem 1rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      word-break: break-all;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 0.5px solid var(--border-hover);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-family: 'Space Mono', monospace;
+      color: var(--text-muted);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .copy-btn:hover { border-color: var(--purple); color: var(--purple); }
+
+    /* TOKENOMICS */
+    .tokenomics-bar {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 32px;
+      display: flex;
+      margin: 1.25rem 0;
+    }
+
+    .bar-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.9);
+      transition: opacity 0.2s;
+      cursor: default;
+    }
+
+    .bar-seg:hover { opacity: 0.8; }
+
+    .legend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 1.25rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+
+    .feature-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .feature-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ROADMAP */
+    .roadmap {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .roadmap-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .roadmap-dot {
+      position: absolute;
+      left: -23px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border-hover);
+      border: 2px solid var(--bg);
+    }
+
+    .roadmap-dot.done { background: var(--purple); }
+    .roadmap-dot.active { background: var(--green); animation: pulse 2s infinite; }
+
+    .roadmap-phase {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .roadmap-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .roadmap-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* HOW TO BUY */
+    .buy-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .buy-step {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .buy-step:hover { border-color: var(--purple); }
+
+    .step-left { display: flex; align-items: center; gap: 14px; }
+
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .step-desc { font-size: 12px; color: var(--text-muted); }
+
+    .btn-sm {
+      padding: 7px 16px;
+      font-size: 11px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--purple);
+      object-fit: cover;
+      object-position: center top;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--purple); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .footer-disclaimer {
+      font-size: 10px;
+      color: #555;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      section { padding: 3.5rem 1.25rem; }
+      .legend { grid-template-columns: 1fr; }
+      .bar-seg { font-size: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <img src="CUH.gif" alt="CUH logo" />
+      <span>JESSICA <em>TOKEN</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tokenomics">Tokenomics</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#buy" class="nav-cta">Buy CUH</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="ticker-badge">
+      <span class="live-dot"></span>
+      OP-20 TOKEN &nbsp;·&nbsp; BITCOIN L1 &nbsp;·&nbsp; OPNET
+    </div>
+    <div class="logo-wrap">
+      <img src="CUH.gif" alt="Jessica Token CUH black cat logo" />
+    </div>
+    <h1>JESSICA <span>TOKEN</span></h1>
+    <p class="hero-sub">Bitcoin-native &nbsp;·&nbsp; No bridges &nbsp;·&nbsp; No wrapped assets &nbsp;·&nbsp; Pure L1</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="https://motoswap.org" target="_blank" rel="noopener">Buy CUH on MotoSwap</a>
+      <a class="btn-secondary" href="#about">Learn more</a>
+    </div>
+    <div class="verified-badge">
+      <span class="verified-dot"></span>
+      Verified contract on OP_SCAN
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section id="stats">
+    <div class="section-label">token stats</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">TICKER</div>
+        <div class="stat-value purple">CUH</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">TOTAL SUPPLY</div>
+        <div class="stat-value" style="font-size:14px;">1,000,000,000</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">NETWORK</div>
+        <div class="stat-value" style="font-size:13px;">Bitcoin L1</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">STANDARD</div>
+        <div class="stat-value" style="font-size:13px;">OP-20</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">LIQUIDITY</div>
+        <div class="stat-value" style="font-size:13px;">Locked</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">CONTRACT</div>
+        <div class="stat-value" style="font-size:13px;">Verified</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">about CUH</div>
+    <div class="desc-block">
+      Jessica Token (CUH) is a Bitcoin-native OP-20 token built directly on OPNet — no bridges, no wrapped assets, pure Bitcoin Layer 1. CUH launches with a transparent tokenomics structure designed for long-term value: 15% of supply is locked in a MotoSwap BTC liquidity pool, 10% funds ongoing MotoChef yield farming rewards, 8% goes directly to community airdrops and early holder incentives, and 7% is reserved for ecosystem development. Hold CUH, earn real yield, and trade directly for mainnet Bitcoin on MotoSwap. This is Bitcoin DeFi for people who actually understand what's coming. CUH. *WILL BE FEATURED ON BITCOIN_MADE_&_BITCOIN_PAID
+    </div>
+    <div class="contract-label">CONTRACT ADDRESS</div>
+    <div class="contract-box">
+      <!-- REPLACE THE TEXT BELOW WITH YOUR REAL CONTRACT ADDRESS AFTER DEPLOYING CUH -->
+      <span id="contract-addr">opt1sqqsd2hnjtrqsmw4qrujwddtkl8wz88yqesh2jc39</span>
+      <button class="copy-btn" onclick="copyAddr()">copy</button>
+    </div>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section id="tokenomics">
+    <div class="section-label">tokenomics</div>
+    <div class="tokenomics-bar">
+      <div class="bar-seg" style="width:40%; background:#7B3AB0;" title="Community & Ecosystem — 40%">40%</div>
+      <div class="bar-seg" style="width:15%; background:#9B59D0;" title="Liquidity Pool — 15%">15%</div>
+      <div class="bar-seg" style="width:10%; background:#27A96C;" title="Yield Farming — 10%">10%</div>
+      <div class="bar-seg" style="width:8%;  background:#1D9E75;" title="Airdrop & Holders — 8%">8%</div>
+      <div class="bar-seg" style="width:7%;  background:#555;"    title="Dev Fund — 7%">7%</div>
+      <div class="bar-seg" style="width:20%; background:#2a2a2a;" title="Founder (vested) — 20%">20%</div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#7B3AB0;"></span>Community / Ecosystem — 40%</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#9B59D0;"></span>Liquidity Pool (locked) — 15%</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#27A96C;"></span>Yield Farm Rewards — 10%</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#1D9E75;"></span>Airdrop &amp; Holders — 8%</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#555;"></span>Dev &amp; Ecosystem — 7%</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#2a2a2a; border:1px solid #444;"></span>Founder (vested) — 20%</div>
+    </div>
+  </section>
+
+  <!-- WHY CUH -->
+  <section id="why">
+    <div class="section-label">why CUH</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#8383;</div>
+        <div class="feature-title">Pure Bitcoin L1</div>
+        <div class="feature-desc">No bridges, no sidechains. Every CUH transaction is a real Bitcoin transaction settled on mainnet.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128275;</div>
+        <div class="feature-title">Locked liquidity</div>
+        <div class="feature-desc">15% of supply is locked in the MotoSwap BTC pool. Buyers can trade with confidence.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127807;</div>
+        <div class="feature-title">Real yield farming</div>
+        <div class="feature-desc">Stake CUH/BTC LP tokens on MotoChef to earn ongoing CUH rewards. Passive income on Bitcoin.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128200;</div>
+        <div class="feature-title">Swap for BTC anytime</div>
+        <div class="feature-desc">Trade CUH directly for mainnet Bitcoin on MotoSwap. Real dollar exit, no wrapping needed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="section-label">roadmap</div>
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <div class="roadmap-dot done"></div>
+        <div class="roadmap-phase">PHASE 1 · COMPLETE</div>
+        <div class="roadmap-title">Token deployment &amp; verification</div>
+        <div class="roadmap-desc">CUH deployed as OP-20 on OPNet mainnet. Contract verified on OP_SCAN with full metadata.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot active"></div>
+        <div class="roadmap-phase">PHASE 2 · IN PROGRESS</div>
+        <div class="roadmap-title">Liquidity &amp; MotoChef farm launch</div>
+        <div class="roadmap-desc">CUH/BTC liquidity pool seeded on MotoSwap. Yield farm live on MotoChef with CUH rewards for LP providers.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">PHASE 3 · COMING SOON</div>
+        <div class="roadmap-title">Community airdrop</div>
+        <div class="roadmap-desc">8% of supply airdropped to active OPNet wallets and early CUH holders who support the ecosystem.</div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-phase">PHASE 4 · FUTURE</div>
+        <div class="roadmap-title">Ecosystem expansion</div>
+        <div class="roadmap-desc">OPNet protocol partnerships, stablecoin integration via OP-20S standard, and further CUH utility development.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO BUY -->
+  <section id="buy">
+    <div class="section-label">how to get CUH</div>
+    <div class="buy-steps">
+      <div class="buy-step">
+        <div class="step-left">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Get OP_WALLET</div>
+            <div class="step-desc">Download the official OPNet browser extension for Chrome</div>
+          </div>
+        </div>
+        <a class="btn-secondary btn-sm" href="https://chromewebstore.google.com/detail/opwallet/pmbjpcmaaladnfpacpmhmnfmpklgbdjb" target="_blank" rel="noopener">Download</a>
+      </div>
+      <div class="buy-step">
+        <div class="step-left">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">Fund your wallet with BTC</div>
+            <div class="step-desc">Send Bitcoin from any exchange or wallet to your OP_WALLET address</div>
+          </div>
+        </div>
+        <a class="btn-secondary btn-sm" href="https://opnet.org" target="_blank" rel="noopener">Learn more</a>
+      </div>
+      <div class="buy-step">
+        <div class="step-left">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">Swap BTC for CUH on MotoSwap</div>
+            <div class="step-desc">Go to MotoSwap, search CUH, and swap your Bitcoin directly</div>
+          </div>
+        </div>
+        <a class="btn-primary btn-sm" href="https://motoswap.org" target="_blank" rel="noopener">Trade now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img class="footer-logo" src="CUH.gif" alt="CUH Jessica Token" />
+    <div class="footer-links">
+      <a href="https://motoswap.org" target="_blank" rel="noopener">MotoSwap</a>
+      <a href="https://farm.motoswap.org" target="_blank" rel="noopener">MotoChef</a>
+      <a href="https://opnet.org" target="_blank" rel="noopener">OPNet</a>
+      <a href="https://opnet.org/explorer" target="_blank" rel="noopener">OP_SCAN</a>
+    </div>
+    <div class="footer-copy">JESSICA TOKEN (CUH) &nbsp;·&nbsp; BITCOIN LAYER 1 &nbsp;·&nbsp; OPNET OP-20</div>
+    <div class="footer-disclaimer">Cryptocurrency involves significant risk. CUH is a community token. This is not financial advice. Always do your own research before investing.</div>
+  </footer>
+
+  <script>
+    function copyAddr() {
+      const el = document.getElementById('contract-addr');
+      const text = el.textContent.trim();
+      if (text.includes('Paste')) {
+        alert('Add your real contract address to the index.html file after deploying CUH.');
+        return;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const orig = btn.textContent;
+        btn.textContent = 'copied!';
+        btn.style.color = '#27A96C';
+        setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+      });
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? '#9B59D0' : '';
+      });
+    });
+  </script>
+
+</body>
+</html>
