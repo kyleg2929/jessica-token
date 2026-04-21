@@ -174,7 +174,6 @@
     background: #000000;
   }
   .cat-runner::before {
-    /* head */
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -183,7 +182,6 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.9);
   }
   .cat-runner::after {
-    /* tail */
     width: 40px;
     height: 10px;
     border-radius: 10px;
@@ -321,22 +319,33 @@
     <h3>How to obtain the NFTs</h3>
     <ol>
       <li><strong>Acquire Bitcoin or Lightning Bitcoin.</strong></li>
-      <li><strong>Send payment to the official project wallet address</strong> with the NFT number in the memo/comment.</li>
+      <li><strong>Send payment to the official project wallet address:</strong><br>
+          BTC: <strong>bc1pwa3dwj94n9rnfgs60v5hxwtccygv6huz33dlzfw2vf7r9ndjtu4qxd3n97</strong><br>
+          Lightning: <strong>spark1pgssy4l9sh5m8359022fd5vyrt36hf6094stfuphfv7cdlgun3d22gw4zwfwnx</strong>
+      </li>
+      <li><strong>Include the NFT number in the memo/comment.</strong></li>
       <li><strong>Provide your receiving address</strong> for the NFT (compatible Bitcoin / OP_NET wallet).</li>
       <li>Once verified, the NFT is transferred to your address.</li>
       <li>To unlock NFT #4 (Jessica Cat BTC), you must hold NFTs #1, #2, and #3.</li>
     </ol>
     <p class="note">
-      On‑chain verification and automated delivery will be handled by the project’s backend and marketplace integration.
-      This page describes the intended flow; the live minting and transfer logic will be wired to real infrastructure.
+      100% of all NFT payments go directly to the founder’s BTC wallet.
     </p>
   </div>
 
   <div class="section">
     <h2>Buy $CUH and NFTs with Bitcoin or Lightning</h2>
     <p>
-      All items in the Jessica ecosystem — the $CUH token and the NFTs — are intended
-      to be purchasable using either <strong>Bitcoin</strong> or <strong>Lightning Bitcoin</strong>.
+      All items in the Jessica ecosystem — the $CUH token and the NFTs — are purchasable using either <strong>Bitcoin</strong> or <strong>Lightning Bitcoin</strong>.
+    </p>
+
+    <h3>Payment Addresses</h3>
+    <p>
+      <strong>Bitcoin (Taproot):</strong><br>
+      <span style="color:#ff9900;">bc1pwa3dwj94n9rnfgs60v5hxwtccygv6huz33dlzfw2vf7r9ndjtu4qxd3n97</span><br><br>
+
+      <strong>Lightning (Xverse):</strong><br>
+      <span style="color:#ff9900;">spark1pgssy4l9sh5m8359022fd5vyrt36hf6094stfuphfv7cdlgun3d22gw4zwfwnx</span>
     </p>
 
     <h3>Planned on‑site features</h3>
@@ -355,9 +364,7 @@
 
     <p class="note">
       These buttons are placeholders. To make them live, this site must be connected to
-      real payment processors, Lightning infrastructure, and swap APIs.  
-      Never share private keys or seed phrases — only public receiving addresses or
-      payment endpoints should be used.
+      real payment processors, Lightning infrastructure, and swap APIs.
     </p>
   </div>
 
@@ -371,6 +378,17 @@
     <p class="note">
       The exact staking contract address, reward schedule, and integration details will
       be published once the smart contracts and OP_NET infrastructure are finalized.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Founder Allocation & OP_NET Wallet</h2>
+    <p>
+      17% of the total $CUH token supply is allocated to the founder development pool.<br>
+      This allocation mints directly to the official OP_20 project wallet:
+    </p>
+    <p style="color:#ff9900;">
+      0x7d463618c3833c6b8c72f1bb3220b2ddedc8fc3cbb02dfe0146ca76711b92c1f
     </p>
   </div>
 
@@ -397,28 +415,6 @@
     <h2>Tokenomics</h2>
     <ul>
       <li>Total Supply: 100,000,000 $CUH</li>
+      <li>Founder/Dev Pool: 17% (sent to OP_20 wallet)</li>
       <li>IDO Allocation: 10%</li>
-      <li>Launch FDV: $1,000,000</li>
-      <li>Staking Rewards: 36‑month emission</li>
-      <li>Team Vesting: 12‑month cliff, 24‑month linear</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Socials</h2>
-    <p>
-      Twitter/X: <a href="#" target="_blank">Coming soon</a><br>
-      Telegram: Coming soon<br>
-      GitHub: <a href="https://github.com/kyleg2929/jessica-token" target="_blank">Project repository</a>
-    </p>
-  </div>
-
-  <div class="divider"></div>
-
-  <p style="color:#ffb3cc; font-size:0.85rem;">
-    © 2025 Jessica Token — Built on Bitcoin OP_NET
-  </p>
-</div>
-
-</body>
-</html>
+      <li>Staking Rewards: 36‑
