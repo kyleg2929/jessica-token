@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Jessica Token ($CUH) — OP_NET Meme Utility</title>
+<title>Jessica Token ($CUH) - OP_NET Meme Utility</title>
 <style>
   body {
-    background-color: #0d0d0d;
-    color: #f2f2f2;
+    background-color: #000d4b;
+    color: #ff2972;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    overflow-x: hidden;
   }
   .container {
     max-width: 900px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 40px 20px 80px 20px;
+    position: relative;
+    z-index: 10;
   }
   h1, h2, h3 {
     color: #ff9900;
@@ -32,84 +35,390 @@
     border-bottom: 1px solid #333;
     margin: 40px 0;
   }
+  .center {
+    text-align: center;
+  }
+  .avatar {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 220px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(255, 41, 114, 0.6);
+  }
+
+  /* NFT gallery */
+  .nft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  .nft-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #ff2972;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
+  }
+  .nft-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 18px rgba(255, 41, 114, 0.7);
+  }
+  .nft-title {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ff9900;
+  }
+  .nft-meta {
+    font-size: 0.9rem;
+    color: #ffb3cc;
+  }
+
+  /* Buttons / CTAs */
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .btn {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #ff9900;
+    background: transparent;
+    color: #ff9900;
+    cursor: default;
+    font-size: 0.9rem;
+  }
+  .btn.disabled {
+    opacity: 0.6;
+  }
+  .note {
+    font-size: 0.85rem;
+    color: #ffb3cc;
+  }
+
+  /* Cosmic background elements */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .asteroid, .btc-logo {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .asteroid {
+    background-image: radial-gradient(circle at 30% 30%, #ff9900, transparent 60%);
+    animation: drift 22s linear infinite;
+  }
+  .btc-logo {
+    background-image: radial-gradient(circle at 50% 50%, #ff9900, transparent 55%);
+    border-radius: 50%;
+    animation: floatUp 18s linear infinite;
+  }
+  @keyframes drift {
+    0% { transform: translate(-10vw, 10vh); }
+    100% { transform: translate(110vw, -20vh); }
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(110vh); }
+    100% { transform: translateY(-20vh); }
+  }
+
+  /* Crescent moon */
+  .moon {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: -18px 0 0 0 #ff9900;
+    background: transparent;
+    animation: moonPulse 3s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+  }
+  @keyframes moonPulse {
+    0%, 100% { box-shadow: -18px 0 0 0 #ff9900; opacity: 0.7; }
+    50% { box-shadow: -22px 0 0 0 #ff2972; opacity: 1; }
+  }
+
+  /* Running cat silhouette */
+  .cat-runner {
+    position: fixed;
+    bottom: 10px;
+    left: -120px;
+    width: 100px;
+    height: 50px;
+    background: radial-gradient(circle at 30% 30%, #000000, #000000);
+    border-radius: 50px 50px 30px 30px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+    overflow: visible;
+    z-index: 3;
+    animation: catRun 14s linear infinite;
+  }
+  .cat-runner::before,
+  .cat-runner::after {
+    content: "";
+    position: absolute;
+    background: #000000;
+  }
+  .cat-runner::before {
+    /* head */
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    top: -18px;
+    right: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.9);
+  }
+  .cat-runner::after {
+    /* tail */
+    width: 40px;
+    height: 10px;
+    border-radius: 10px;
+    left: -30px;
+    top: 10px;
+    transform-origin: right center;
+    animation: tailWag 0.6s ease-in-out infinite;
+  }
+  @keyframes catRun {
+    0% { transform: translateX(-120px); }
+    40% { transform: translateX(110vw); }
+    100% { transform: translateX(110vw); }
+  }
+  @keyframes tailWag {
+    0%, 100% { transform: rotate(10deg); }
+    50% { transform: rotate(-12deg); }
+  }
+
+  @media (max-width: 600px) {
+    .moon {
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+    }
+    .container {
+      padding: 24px 14px 70px 14px;
+    }
+  }
 </style>
 </head>
-
 <body>
+
+<!-- Cosmic background elements -->
+<div class="bg-layer">
+  <div class="asteroid" style="top:10%; left:5%; animation-delay:0s;"></div>
+  <div class="asteroid" style="top:60%; left:80%; animation-delay:5s;"></div>
+  <div class="asteroid" style="top:30%; left:50%; animation-delay:10s;"></div>
+
+  <div class="btc-logo" style="left:15%; animation-delay:3s;"></div>
+  <div class="btc-logo" style="left:65%; animation-delay:9s;"></div>
+  <div class="btc-logo" style="left:40%; animation-delay:14s;"></div>
+</div>
+
+<div class="moon"></div>
+<div class="cat-runner"></div>
+
 <div class="container">
+  <div class="section center">
+    <img src="https://i.postimg.cc/MHq8TQpw/CUH.gif" alt="Jessica Token Avatar" class="avatar">
+    <h1>Jessica Token ($CUH)</h1>
+    <h3>Bitcoin OP_NET Meme Utility Asset</h3>
+    <p>
+      Jessica Token is a meme‑driven asset built on Bitcoin L1 via OP_NET.<br>
+      Designed for culture, powered by incentives, aligned with Bitcoin’s security.
+    </p>
+  </div>
 
-<h1>Jessica Token ($CUH)</h1>
-<h3>Bitcoin OP_NET Meme Utility Asset</h3>
+  <div class="divider"></div>
 
-<p>
-Jessica Token is a meme‑driven asset built on Bitcoin L1 via OP_NET.  
-Designed for culture, powered by incentives, aligned with Bitcoin’s security.
-</p>
+  <div class="section">
+    <h2>What is Jessica Token?</h2>
+    <p>
+      $CUH blends meme culture with real on‑chain utility. Built on OP_NET, it introduces
+      stake‑to‑earn mechanics, yield aggregation, and a community‑first reward model —
+      all secured by Bitcoin L1.
+    </p>
+  </div>
 
-<div class="divider"></div>
+  <div class="section">
+    <h2>Utility</h2>
+    <ul>
+      <li>Stake‑to‑earn BTC rewards for $CUH holders</li>
+      <li>Future liquidity pool for yield aggregation</li>
+      <li>Community incentives and participation rewards</li>
+      <li>Bitcoin‑aligned meme culture and NFT access</li>
+    </ul>
+  </div>
 
-<div class="section">
-<h2>What is Jessica Token?</h2>
-<p>
-$CUH blends meme culture with real on‑chain utility.  
-Built on OP_NET, it introduces stake‑to‑earn mechanics, yield aggregation,  
-and a community‑first reward model — all secured by Bitcoin L1.
-</p>
+  <div class="section">
+    <h2>Jessica NFT Collection</h2>
+    <p>
+      There are <strong>4 total NFTs</strong> in the Jessica collection.  
+      NFTs #1–#3 are purchasable. NFT #4 is <strong>unlock‑only</strong>:
+      you must own all three of the first NFTs to receive it.
+    </p>
+
+    <div class="nft-grid">
+      <div class="nft-card">
+        <img src="https://i.postimg.cc/MHq8TQpw/CUH.gif"
+             alt="CUH NFT"
+             title="STAKE ME CUH IM WORTH IT">
+        <div class="nft-title">NFT #1 — CUH</div>
+        <div class="nft-meta">
+          Supply: 50<br>
+          Chain: Bitcoin / OP_NET
+        </div>
+      </div>
+
+      <div class="nft-card">
+        <img src="https://i.postimg.cc/vTBc9QQB/REDEYECATNFT.gif"
+             alt="Red Eye Cat NFT"
+             title="STAKE ME CUH IM WORTH IT">
+        <div class="nft-title">NFT #2 — Red Eye Cat</div>
+        <div class="nft-meta">
+          Supply: 50<br>
+          Chain: Bitcoin / OP_NET
+        </div>
+      </div>
+
+      <div class="nft-card">
+        <img src="https://i.postimg.cc/qMDCRWcG/GREENEYECATCLOCKNFT.gif"
+             alt="Green Eye Cat Clock NFT"
+             title="STAKE ME CUH IM WORTH IT">
+        <div class="nft-title">NFT #3 — Green Eye Cat Clock</div>
+        <div class="nft-meta">
+          Supply: 50<br>
+          Chain: Bitcoin / OP_NET
+        </div>
+      </div>
+
+      <div class="nft-card">
+        <img src="https://i.postimg.cc/3RhkVh74/JESSICACATBTC.gif"
+             alt="Jessica Cat BTC NFT">
+        <div class="nft-title">NFT #4 — Jessica Cat BTC</div>
+        <div class="nft-meta">
+          Supply: 25<br>
+          <strong>Unlockable:</strong> requires ownership of NFTs #1, #2, and #3.
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3>How to obtain the NFTs</h3>
+    <ol>
+      <li><strong>Acquire Bitcoin or Lightning Bitcoin.</strong></li>
+      <li><strong>Send payment to the official project wallet address</strong> with the NFT number in the memo/comment.</li>
+      <li><strong>Provide your receiving address</strong> for the NFT (compatible Bitcoin / OP_NET wallet).</li>
+      <li>Once verified, the NFT is transferred to your address.</li>
+      <li>To unlock NFT #4 (Jessica Cat BTC), you must hold NFTs #1, #2, and #3.</li>
+    </ol>
+    <p class="note">
+      On‑chain verification and automated delivery will be handled by the project’s backend and marketplace integration.
+      This page describes the intended flow; the live minting and transfer logic will be wired to real infrastructure.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Buy $CUH and NFTs with Bitcoin or Lightning</h2>
+    <p>
+      All items in the Jessica ecosystem — the $CUH token and the NFTs — are intended
+      to be purchasable using either <strong>Bitcoin</strong> or <strong>Lightning Bitcoin</strong>.
+    </p>
+
+    <h3>Planned on‑site features</h3>
+    <ul>
+      <li><strong>Bitcoin payment module</strong> for $CUH and NFTs</li>
+      <li><strong>Lightning payment option</strong> for faster, cheaper transactions</li>
+      <li><strong>Bitcoin token swap interface</strong> to convert supported Bitcoin‑chain tokens into BTC</li>
+      <li><strong>Stake‑to‑earn BTC rewards</strong> for $CUH holders</li>
+    </ul>
+
+    <div class="btn-row">
+      <button class="btn disabled">Pay with Bitcoin (integration coming)</button>
+      <button class="btn disabled">Pay with Lightning (integration coming)</button>
+      <button class="btn disabled">Swap BTC Tokens → BTC (integration coming)</button>
+    </div>
+
+    <p class="note">
+      These buttons are placeholders. To make them live, this site must be connected to
+      real payment processors, Lightning infrastructure, and swap APIs.  
+      Never share private keys or seed phrases — only public receiving addresses or
+      payment endpoints should be used.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Stake‑to‑Earn BTC Rewards</h2>
+    <p>
+      $CUH is designed with a stake‑to‑earn BTC rewards model. Holders who stake their
+      tokens in the official staking contract or pool will be eligible to receive BTC
+      rewards over time, sourced from ecosystem activity and fees.
+    </p>
+    <p class="note">
+      The exact staking contract address, reward schedule, and integration details will
+      be published once the smart contracts and OP_NET infrastructure are finalized.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Why OP_NET?</h2>
+    <p>
+      OP_NET enables expressive token mechanics while inheriting Bitcoin’s base‑layer
+      security. It gives $CUH the perfect environment to grow: scalable, secure, and
+      culturally aligned with Bitcoin‑native builders.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Roadmap</h2>
+    <ul>
+      <li><strong>Phase 1:</strong> Token architecture, branding, NFT collection, community formation</li>
+      <li><strong>Phase 2:</strong> Staking model + yield aggregator design</li>
+      <li><strong>Phase 3:</strong> Liquidity pool launch + OP_NET integrations</li>
+      <li><strong>Phase 4:</strong> Scaling incentives + ecosystem partnerships</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Tokenomics</h2>
+    <ul>
+      <li>Total Supply: 100,000,000 $CUH</li>
+      <li>IDO Allocation: 10%</li>
+      <li>Launch FDV: $1,000,000</li>
+      <li>Staking Rewards: 36‑month emission</li>
+      <li>Team Vesting: 12‑month cliff, 24‑month linear</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Socials</h2>
+    <p>
+      Twitter/X: <a href="#" target="_blank">Coming soon</a><br>
+      Telegram: Coming soon<br>
+      GitHub: <a href="https://github.com/kyleg2929/jessica-token" target="_blank">Project repository</a>
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <p style="color:#ffb3cc; font-size:0.85rem;">
+    © 2025 Jessica Token — Built on Bitcoin OP_NET
+  </p>
 </div>
 
-<div class="section">
-<h2>Utility</h2>
-<ul>
-  <li>Stake‑to‑earn rewards</li>
-  <li>Future liquidity pool for yield aggregation</li>
-  <li>Community incentives and participation rewards</li>
-  <li>Bitcoin‑aligned meme culture</li>
-</ul>
-</div>
-
-<div class="section">
-<h2>Why OP_NET?</h2>
-<p>
-OP_NET enables expressive token mechanics while inheriting Bitcoin’s  
-base‑layer security. It gives $CUH the perfect environment to grow:  
-scalable, secure, and culturally aligned with Bitcoin‑native builders.
-</p>
-</div>
-
-<div class="section">
-<h2>Roadmap</h2>
-<ul>
-  <li><strong>Phase 1:</strong> Token architecture, branding, community formation</li>
-  <li><strong>Phase 2:</strong> Staking model + yield aggregator design</li>
-  <li><strong>Phase 3:</strong> Liquidity pool launch + OP_NET integrations</li>
-  <li><strong>Phase 4:</strong> Scaling incentives + ecosystem partnerships</li>
-</ul>
-</div>
-
-<div class="section">
-<h2>Tokenomics</h2>
-<ul>
-  <li>Total Supply: 100,000,000 $CUH</li>
-  <li>IDO Allocation: 10%</li>
-  <li>Launch FDV: $1,000,000</li>
-  <li>Staking Rewards: 36‑month emission</li>
-  <li>Team Vesting: 12‑month cliff, 24‑month linear</li>
-</ul>
-</div>
-
-<div class="section">
-<h2>Socials</h2>
-<p>
-Twitter/X: <a href="https://x.com/JessicaToken">https://x.com/JessicaToken</a><br>
-Telegram: Coming soon<br>
-GitHub: Coming soon
-</p>
-</div>
-
-<div class="divider"></div>
-
-<p style="color:#555;">© 2025 Jessica Token — Built on Bitcoin OP_NET</p>
-
-</div>
 </body>
 </html>
