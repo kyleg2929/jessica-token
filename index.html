@@ -5,67 +5,6 @@
 <title>Jessica Token ($CUH) - OP_NET Meme Utility</title>
 
 <style>
-/* BUY CUH MODAL */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.modal-box {
-  background: rgba(0, 0, 0, 0.85);
-  border: 2px solid var(--neon-purple);
-  border-radius: 20px;
-  padding: 30px;
-  width: 90%;
-  max-width: 480px;
-  text-align: center;
-  box-shadow: 0 0 30px rgba(179, 140, 255, 0.9);
-}
-
-.modal-box h2 {
-  color: var(--neon-purple);
-  font-size: 2rem;
-  margin-bottom: 10px;
-  text-shadow: 0 0 12px rgba(179, 140, 255, 1);
-}
-
-.modal-section {
-  margin: 20px 0;
-}
-
-.modal-address {
-  background: rgba(255, 41, 255, 0.15);
-  border: 1px solid var(--neon-pink);
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  word-break: break-all;
-  box-shadow: 0 0 12px rgba(255, 41, 255, 0.7);
-}
-
-.modal-note {
-  font-size: 0.85rem;
-  margin-top: 10px;
-  color: var(--text-main);
-}
-
-.modal-close {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: var(--neon-pink);
-  border: 2px solid black;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
-  color: black;
-}
-
-  
   :root {
     --bg-black: #000000;
     --neon-purple: #b38cff;
@@ -154,9 +93,7 @@
     100% { transform: translate(110vw, -20vh); }
   }
 
-  /* REMOVE MOON + SPINNING BTC LOGOS — THEY ARE GONE */
-
-  /* KEEP CAT-RUNNER */
+  /* CAT-RUNNER */
   .cat-runner {
     position: fixed;
     bottom: 10px;
@@ -207,38 +144,6 @@
     50% { transform: rotate(-12deg); }
   }
 
-<button class="btn" id="openBuyModal">Buy $CUH</button>
-
-  
-  /* NFT CARDS — ROUNDED + LARGER */
-  .nft-achievements {
-    border: 2px solid var(--border-strong);
-    border-radius: 22px;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.55);
-    box-shadow: 0 0 30px rgba(179, 140, 255, 0.6);
-  }
-
-  .nft-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-  }
-
-  .nft-card {
-    background: rgba(10, 10, 10, 0.9);
-    border-radius: 18px;
-    padding: 16px;
-    border: 2px solid var(--border-strong);
-    box-shadow: 0 0 26px rgba(179, 140, 255, 0.9);
-  }
-
-  .nft-card img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 0 22px rgba(255, 41, 255, 0.9);
-  }
-
   /* BUTTONS — NEON PINK WITH BLACK OUTLINE */
   .btn-row {
     display: flex;
@@ -256,16 +161,64 @@
     color: black;
     font-weight: 700;
     font-size: 1rem;
-    text-shadow: none;
     cursor: pointer;
   }
 
+  /* BUY CUH MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .modal-box {
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid var(--neon-purple);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(179, 140, 255, 0.9);
+  }
+
+  .modal-box h2 {
+    color: var(--neon-purple);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 12px rgba(179, 140, 255, 1);
+  }
+
+  .modal-address {
+    background: rgba(255, 41, 255, 0.15);
+    border: 1px solid var(--neon-pink);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    word-break: break-all;
+    box-shadow: 0 0 12px rgba(255, 41, 255, 0.7);
+  }
+
+  .modal-close {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: var(--neon-pink);
+    border: 2px solid black;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    color: black;
+  }
 </style>
 </head>
 
 <body>
 
-<!-- ASTEROIDS (GREY) -->
+<!-- ASTEROIDS -->
 <div class="bg-layer">
   <div class="asteroid" style="top:10%; left:5%; animation-delay:0s;"></div>
   <div class="asteroid" style="top:60%; left:80%; animation-delay:5s;"></div>
@@ -277,7 +230,7 @@
 
 <div class="container">
 
-  <!-- CUH AVATAR (3X SIZE) -->
+  <!-- CUH AVATAR -->
   <img src="https://i.postimg.cc/MHq8TQpw/CUH.gif" class="avatar">
 
   <h1>Jessica Token ($CUH)</h1>
@@ -309,12 +262,23 @@
 
   <div class="divider"></div>
 
-  <!-- NFT SECTION (unchanged content, upgraded visuals) -->
-  <!-- ... NFT code stays the same ... -->
+  <!-- FOUNDER WALLET UPDATED -->
+  <div class="section">
+    <h2>Founder Allocation & OP_NET Wallet</h2>
+    <p>
+      17% of the total $CUH token supply is allocated to the founder development pool.<br>
+      This allocation mints directly to the official OP_20 project wallet:
+    </p>
+    <p style="color:var(--neon-purple); font-size:1.1rem; word-break:break-all;">
+      0xe9eaac1cd96d7199225c61c502c0ff9be620a0aa22065dc6e05e5fcd233780cd
+    </p>
+    <p class="note">
+      Founder Allocation: <strong>17,000,000 CUH</strong> (worth 2.38 BTC at the locked 14‑sat price).
+    </p>
+  </div>
 
   <div class="divider"></div>
 
-  <!-- REPLACED FEATURES SECTION -->
   <h2>Jessica Token Features</h2>
   <ul style="text-align:left; max-width:600px; margin:auto;">
     <li>Buy $CUH with Bitcoin</li>
@@ -325,12 +289,13 @@
   </ul>
 
   <div class="btn-row">
+    <button class="btn" id="openBuyModal">Buy $CUH</button>
     <button class="btn">Pay with Bitcoin</button>
     <button class="btn">Pay with Lightning</button>
-    <button class="btn">Swap BTC Tokens → BTC</button>
   </div>
 
 </div>
+
 <!-- BUY CUH MODAL -->
 <div id="buyCuhModal" class="modal-overlay">
   <div class="modal-box">
@@ -351,42 +316,11 @@
       </div>
     </div>
 
-    <p class="modal-note">
-      After sending payment, include your receiving address in the memo/comment.
-    </p>
-
-    <button class="modal-close" id="closeBuyModal">Close</button>
-  </div>
-</div>
-<!-- BUY CUH MODAL -->
-<div id="buyCuhModal" class="modal-overlay">
-  <div class="modal-box">
-    <h2>Buy $CUH</h2>
-    <p>Send Bitcoin or Lightning to purchase Jessica Token ($CUH).</p>
-
-    <div class="modal-section">
-      <h3>Bitcoin (Taproot)</h3>
-      <div class="modal-address">
-        bc1pwa3dwj94n9rnfgs60v5hxwtccygv6huz33dlzfw2vf7r9ndjtu4qxd3n97
-      </div>
-    </div>
-
-    <div class="modal-section">
-      <h3>Lightning (Xverse)</h3>
-      <div class="modal-address">
-        spark1pgssy4l9sh5m8359022fd5vyrt36hf6094stfuphfv7cdlgun3d22gw4zwfwnx
-      </div>
-    </div>
-
-    <p class="modal-note">
-      After sending payment, include your receiving address in the memo/comment.
-    </p>
-
     <button class="modal-close" id="closeBuyModal">Close</button>
   </div>
 </div>
 
-  <script>
+<script>
   const openModal = document.getElementById("openBuyModal");
   const closeModal = document.getElementById("closeBuyModal");
   const modal = document.getElementById("buyCuhModal");
@@ -399,6 +333,5 @@
   };
 </script>
 
-  
 </body>
 </html>
