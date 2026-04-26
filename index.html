@@ -5,6 +5,80 @@
 <title>Jessica Token ($CUH) - OP_NET Meme Utility</title>
 
 <style>
+
+  /* NFT Card Glow + Hover */
+.nft-card {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 18px;
+    border: 2px solid #b300ff;
+    box-shadow: 0 0 25px #b300ff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nft-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 45px #ff29ff;
+}
+
+/* Hover Overlay Text */
+.nft-hover-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(179, 0, 255, 0.85);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    text-shadow: 0 0 10px #000;
+}
+
+.nft-card:hover .nft-hover-text {
+    opacity: 1;
+}
+
+/* Spinning Bitcoin Logos */
+.spin-btc {
+    width: 80px;
+    animation: spin 6s linear infinite;
+    filter: drop-shadow(0 0 10px #b300ff);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Connect Wallet Button */
+.connect-wallet {
+    padding: 14px 28px;
+    background: #ff00ff;
+    color: #000;
+    font-weight: 800;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px #ff00ff;
+    transition: 0.25s ease;
+}
+
+.connect-wallet:hover {
+    background: #b300ff;
+    box-shadow: 0 0 35px #b300ff;
+}
+
+  
+  
   :root {
     --bg-black: #000000;
     --neon-purple: #b38cff;
@@ -222,6 +296,80 @@
 </style>
 </head>
 
+<section id="nfts" style="margin-top: 60px; text-align: center;">
+
+    <!-- Spinning Bitcoin Logos -->
+    <div style="display:flex; justify-content:center; gap:40px; margin-bottom:20px;">
+        <img src="BTC_LOGO_URL" class="spin-btc">
+        <img src="BTC_LOGO_URL" class="spin-btc">
+        <img src="BTC_LOGO_URL" class="spin-btc">
+    </div>
+
+    <button class="connect-wallet">CONNECT WALLET</button>
+
+    <h2 style="color: #b300ff; font-size: 42px; font-weight: 800; margin-bottom: 20px;">
+        JESSICA TOKEN – BITCOIN ORDINAL NFT COLLECTION
+    </h2>
+
+    <p style="color: #fff; font-size: 18px; max-width: 800px; margin: 0 auto 40px;">
+        Four-tier Bitcoin Ordinals collection designed for collectors, supporters, and true CUH believers.
+        All mint proceeds go directly to the official CUH BTC treasury wallet:
+        <br><strong style="color:#ff66ff;">bc1pnv58tst60hdtnkghwrmwdjegl24unnjykn4pjyq7jc0fpz7cn9yq7wxxwt</strong>
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto;">
+
+        <!-- NFT 1 -->
+        <div class="nft-card">
+            <div class="nft-hover-text">STAKE $CUH I'M WORTH IT</div>
+            <h3 style="color:#b300ff; font-size: 28px; font-weight: 700;">CUH 1</h3>
+            <p style="color:#fff;">Supply: <strong>50</strong></p>
+            <p style="color:#fff;">Mint Price: <strong>0.0001 BTC</strong></p>
+            <button style="margin-top:15px; padding:12px 20px; background:#ff00ff; color:#000; border:none; border-radius:10px; font-weight:700; cursor:pointer;">
+                Mint CUH 1
+            </button>
+        </div>
+
+        <!-- NFT 2 -->
+        <div class="nft-card">
+            <div class="nft-hover-text">STAKE $CUH I'M WORTH IT</div>
+            <h3 style="color:#b300ff; font-size: 28px; font-weight: 700;">CUH 2E</h3>
+            <p style="color:#fff;">Supply: <strong>50</strong></p>
+            <p style="color:#fff;">Mint Price: <strong>0.00085 BTC</strong></p>
+            <button style="margin-top:15px; padding:12px 20px; background:#ff00ff; color:#000; border:none; border-radius:10px; font-weight:700; cursor:pointer;">
+                Mint CUH 2E
+            </button>
+        </div>
+
+        <!-- NFT 3 -->
+        <div class="nft-card">
+            <div class="nft-hover-text">STAKE $CUH I'M WORTH IT</div>
+            <h3 style="color:#b300ff; font-size: 28px; font-weight: 700;">CUH 3</h3>
+            <p style="color:#fff;">Supply: <strong>50</strong></p>
+            <p style="color:#fff;">Mint Price: <strong>0.001 BTC</strong></p>
+            <button style="margin-top:15px; padding:12px 20px; background:#ff00ff; color:#000; border:none; border-radius:10px; font-weight:700; cursor:pointer;">
+                Mint CUH 3
+            </button>
+        </div>
+
+        <!-- NFT 4 -->
+        <div class="nft-card">
+            <div class="nft-hover-text">$CUH OG 1 OF 25</div>
+            <h3 style="color:#b300ff; font-size: 28px; font-weight: 700;">Official CUH OG (1 of 25)</h3>
+            <p style="color:#fff;">Supply: <strong>25</strong></p>
+            <p style="color:#fff;">Mint Price: <strong>0.00029 BTC</strong></p>
+            <p style="color:#ff66ff;"><strong>Requires CUH 1 + CUH 2E + CUH 3</strong></p>
+            <button style="margin-top:15px; padding:12px 20px; background:#ff00ff; color:#000; border:none; border-radius:10px; font-weight:700; cursor:pointer;">
+                Mint CUH OG
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+  
 <body>
 
 <!-- ASTEROIDS -->
